@@ -13,6 +13,8 @@ class AddEmployee:
     btnSave_xpath = "//form//button[text()=' Save ']"
     table_xpath = "//div[@class='oxd-table-body']"
     txtEmp_xpath = "//div[contains(text(), 'Admin')]"
+    logout_dropdown_xpath = "//p[@class='oxd-userdropdown-name']"
+    logout_xpath = "//a[@class='oxd-userdropdown-link']"
 
     def __init__(self, driver):
         self.driver = driver
@@ -42,6 +44,10 @@ class AddEmployee:
         self.ListEmployees()
         time.sleep(5)
         return self.driver.find_element(By.XPATH, "//div[contains(text(), '{name}')]").text
+
+    def clickLogout(self):
+        self.driver.find_element(By.XPATH, self.logout_dropdown_xpath).click()
+        self.driver.find_element(By.XPATH, self.logout_xpath).click()
 
 
 
